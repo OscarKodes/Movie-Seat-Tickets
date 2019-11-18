@@ -7,6 +7,10 @@ const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 5000;
 
+// REQUIRE ROUTE FILES ==========================
+const movieRoutes = require("./routes/movies");
+const ticketRoutes = require("./routes/tickets");
+
 // APP USE ======================================
 app.use(cors());
 app.use(express.json()); // bodyParser and JSON functionality
@@ -22,6 +26,10 @@ mongoose.connect(url, {
 mongoose.connection.once("open", () => {
     console.log(`MongoDB database connection established at: ${url}`);
 });
+
+// ROUTERS ======================================
+app.use("/movies/", movieRoutes);
+app.use("/movies/:id/tickets", ticketRoutes);
 
 // LISTENER =====================================
 app.listen(port, () => {
