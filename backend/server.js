@@ -20,7 +20,8 @@ const url = "mongodb://localhost:27017/movieDB" || process.env.ATLAS_URL;
 mongoose.connect(url, {
     useNewUrlParser: true, 
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 mongoose.connection.once("open", () => {
