@@ -1,0 +1,31 @@
+.MovieCard {
+    border: 1px solid grey;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: .2rem;
+    width: 40rem;
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+}
+
+.TimeSlots {
+    margin: 0 3rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.TimeSlots p {
+    border: 1px solid lightblue;
+    padding: .5rem;
+    border-radius: .2rem;
+    box-shadow: 0 .1rem .3rem rgba(0,0,0,.1);
+}
+
+.TimeSlots p:hover {
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.15);
+    transform: scale(1.1);
+}
+
+.TimeSlots p:active {
+    box-shadow: 0;
+    transform: scale(1);
+}

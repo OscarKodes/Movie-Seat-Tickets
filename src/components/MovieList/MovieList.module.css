@@ -1,7 +1,8 @@
 .MovieList {
+    background-color: white;
     border: 1px solid lightgrey;
     margin: 1rem;
     padding: 2rem;
     border-radius: .2rem;
-    box-shadow: 0 .2rem 5rem rgba(0,0,0,.1);
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
 }
