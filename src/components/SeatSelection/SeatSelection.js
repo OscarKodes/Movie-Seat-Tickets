@@ -5,10 +5,10 @@ import Backdrop from "../Backdrop/Backdrop";
 
 class seatSelection extends Component {
 
-    componentDidUpdate() {
-        console.log("Component updated: seatSelection");
-    }
-
+    // componentDidUpdate() {
+    //     console.log("Component updated: seatSelection");
+    // }
+    
     render () {
 
         let ticketPrice = 12;
@@ -64,7 +64,9 @@ class seatSelection extends Component {
                     <label>Price
                         <p><strong>${ticketPrice.toFixed(2)}</strong></p>
                     </label>
-                    
+                    <button onClick={() => this.props.purchase(ticketPrice.toFixed(2))}>
+                        Purchase
+                    </button>
                 </div>
             </React.Fragment>
 

@@ -30,8 +30,7 @@ class App extends Component {
         showSeats: !prevState.showSeats,
         selectedSeat: "",
         email: "",
-        age: "",
-        price: null
+        age: ""
       }
     });
   };
@@ -56,6 +55,26 @@ class App extends Component {
     this.setState({email: event.target.value});
   }
 
+  purchaseHandler = (ticketPrice) => {
+    const ticketOrder = {
+      ticket: {
+        showDate: "January 1st, 3030",
+        showTime: this.state.selectedTime,
+        age: this.state.age,
+        cost: ticketPrice,
+        email: this.state.email
+      }
+    }
+
+    axios.post("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets", ticketOrder)
+      .then(res => console.log(res.data));
+
+    this.toggleSeatsHandler();
+
+    // Work on list of ticket orders - make similar to seatSelection
+    alert("Ordered List Opens Here");
+  }
+
   consoleLogHandler = () => {
     console.log(this.state);
   }
@@ -76,7 +95,8 @@ class App extends Component {
           ageChangeHandler={this.ageChangeHandler}
           emailChangeHandler={this.emailChangeHandler}
           age={this.state.age}
-          email={this.state.email}/>
+          email={this.state.email}
+          purchase={this.purchaseHandler}/>
         <button onClick={this.consoleLogHandler}>
           Check State
         </button>
