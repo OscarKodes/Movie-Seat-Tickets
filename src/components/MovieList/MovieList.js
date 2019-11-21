@@ -7,7 +7,14 @@ const movieList = (props) => {
     let allMovieCards = null;
 
     if (props.movies.length > 0) {
-        allMovieCards = props.movies.map(movie => <MovieCard key={movie._id} movie={movie} />);
+        allMovieCards = props.movies.map(movie => {
+            return (
+                <MovieCard 
+                key={movie._id} 
+                movie={movie}
+                toggleSeats={props.toggleSeats} />
+            )
+        });
     }
 
     return (
