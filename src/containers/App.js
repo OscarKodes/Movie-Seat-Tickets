@@ -8,7 +8,16 @@ class App extends Component {
 
   state = {
     movies: [],
-    showSeats: false
+    showSeats: false,
+    selectedMovie: {},
+    selectedTime: ""
+  }
+
+  componentDidMount() {
+    axios.get("http://localhost:5000/movies")
+      .then(res => {
+        this.setState({movies: res.data})
+      })
   }
 
   toggleSeats = () => {
@@ -17,23 +26,25 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-
-    axios.get("http://localhost:5000/movies")
-      .then(res => {
-        this.setState({movies: res.data})
-      })
-  }
+  movieTimeClickHandler = (movie, time) => {
+    this.setState({
+      selectedMovie: movie,
+      selectedTime: time
+    });
+    this.toggleSeats();
+  };
 
   render() {
     return (
       <div className={classes.App}>
         <MovieList 
           movies={this.state.movies}
-          toggleSeats={this.toggleSeats}/>
+          timeClick={this.movieTimeClickHandler}/>
         <SeatSelection
           showSeats={this.state.showSeats}
-          toggleSeats={this.toggleSeats}/>
+          toggleSeats={this.toggleSeats}
+          selectedTime={this.state.selectedTime}
+          selectedMovie={this.state.selectedMovie}/>
       </div>
     );
   }

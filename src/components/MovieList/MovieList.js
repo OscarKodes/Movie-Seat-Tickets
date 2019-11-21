@@ -12,7 +12,7 @@ const movieList = (props) => {
                 <MovieCard 
                 key={movie._id} 
                 movie={movie}
-                toggleSeats={props.toggleSeats} />
+                timeClick={props.timeClick}/>
             )
         });
     }

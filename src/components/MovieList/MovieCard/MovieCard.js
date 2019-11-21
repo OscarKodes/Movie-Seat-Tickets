@@ -14,7 +14,7 @@ const movieCard = (props) => {
         return (
             <p 
                 key={time}
-                onClick={props.toggleSeats}>{time}</p>
+                onClick={() => props.timeClick(props.movie, time)}>{time}</p>
         );
     });
 
