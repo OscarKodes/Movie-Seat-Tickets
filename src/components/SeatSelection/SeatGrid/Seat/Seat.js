@@ -1,10 +1,11 @@
 import React from "react";
+import classes from "./Seat.module.css"
 
 const seat = (props) => {
 
     return (
-        <div>
-            seat
+        <div className={classes.Seat}>
+            {props.children}
         </div>
     )
 }

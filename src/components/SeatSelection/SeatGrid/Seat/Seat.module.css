@@ -1,0 +1,17 @@
+.Seat {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 1px lightblue solid;
+    padding: .5rem;
+    background-color: white;
+    margin: .25rem;
+}
+
+.Seat:hover {
+    transform: scale(1.08);
+}
+
+.Seat:active {
+    transform: scale(1);
+}
