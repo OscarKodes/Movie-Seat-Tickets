@@ -2,17 +2,24 @@ import React from "react";
 import Seat from "./Seat/Seat";
 import classes from "./SeatGrid.module.css"
 
-let rows = ["A", "B", "C", "D"];
-let cols = ["1", "2", "3", "4"];
-let coord = [];
-
+const rows = ["A", "B", "C", "D"];
+const cols = ["1", "2", "3", "4"];
 
 const seatGrid = (props) => {
 
     let allSeats = rows.map(row => {
-        let rowSeats = cols.map(col => <Seat>{row}{col}</Seat>);
+        let rowSeats = cols.map(col => {
+            return (
+                <Seat 
+                    key={col} 
+                    selectedSeat={props.selectedSeat} 
+                    selectSeatHandler={props.selectSeatHandler}>
+                    {row}{col}
+                </Seat>
+            )
+        });
         return (
-            <div>
+            <div key={row}>
                 {rowSeats}
             </div>
         )

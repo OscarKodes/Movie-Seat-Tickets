@@ -10,7 +10,11 @@ class App extends Component {
     movies: [],
     showSeats: false,
     selectedMovie: {},
-    selectedTime: ""
+    selectedTime: "",
+    selectedSeat: "",
+    email: "",
+    age: "",
+    price: null
   }
 
   componentDidMount() {
@@ -20,9 +24,15 @@ class App extends Component {
       })
   }
 
-  toggleSeats = () => {
+  toggleSeatsHandler = () => {
     this.setState(prevState => {
-      return {showSeats: !prevState.showSeats}
+      return {
+        showSeats: !prevState.showSeats,
+        selectedSeat: "",
+        email: "",
+        age: "",
+        price: null
+      }
     });
   };
 
@@ -31,8 +41,24 @@ class App extends Component {
       selectedMovie: movie,
       selectedTime: time
     });
-    this.toggleSeats();
+    this.toggleSeatsHandler();
   };
+
+  selectSeatHandler = (seatStr) => {
+    this.setState({selectedSeat: seatStr});
+  }
+
+  ageChangeHandler = (event) => {
+    this.setState({age: event.target.value});
+  }
+
+  emailChangeHandler = (event) => {
+    this.setState({email: event.target.value});
+  }
+
+  consoleLogHandler = () => {
+    console.log(this.state);
+  }
 
   render() {
     return (
@@ -42,9 +68,18 @@ class App extends Component {
           timeClick={this.movieTimeClickHandler}/>
         <SeatSelection
           showSeats={this.state.showSeats}
-          toggleSeats={this.toggleSeats}
+          toggleSeats={this.toggleSeatsHandler}
           selectedTime={this.state.selectedTime}
-          selectedMovie={this.state.selectedMovie}/>
+          selectedMovie={this.state.selectedMovie}
+          selectedSeat={this.state.selectedSeat}
+          selectSeatHandler={this.selectSeatHandler}
+          ageChangeHandler={this.ageChangeHandler}
+          emailChangeHandler={this.emailChangeHandler}
+          age={this.state.age}
+          email={this.state.email}/>
+        <button onClick={this.consoleLogHandler}>
+          Check State
+        </button>
       </div>
     );
   }

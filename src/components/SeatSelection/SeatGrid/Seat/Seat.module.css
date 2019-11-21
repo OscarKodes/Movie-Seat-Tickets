@@ -8,6 +8,10 @@
     margin: .25rem;
 }
 
+.Seat.Selected {
+    background-color: lightgreen;
+}
+
 .Seat:hover {
     transform: scale(1.08);
 }
