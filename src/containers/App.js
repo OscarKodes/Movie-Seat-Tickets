@@ -33,7 +33,8 @@ class App extends Component {
         showSeats: !prevState.showSeats,
         selectedSeat: "",
         email: "",
-        age: ""
+        age: "",
+        editTicketId: prevState.showSeats ? null : this.state.editTicketId
       }
     });
   };
@@ -101,7 +102,8 @@ class App extends Component {
         updatedMovies[movieIdx] = res.data;
         this.setState({
           movies: updatedMovies,
-          selectedMovie: res.data
+          selectedMovie: res.data,
+          editTicketId: null,
         });
         console.log("Updated ticket order!");
       });
