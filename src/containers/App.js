@@ -11,6 +11,7 @@ class App extends Component {
     movies: [],
     showSeats: false,
     showTicketsSold: false,
+    editTicketId: null,
     selectedMovie: {},
     selectedTime: "",
     selectedSeat: "",
@@ -68,18 +69,32 @@ class App extends Component {
     this.setState({email: event.target.value});
   }
 
+  editButtonHandler = (ticket) => {
+    this.setState({
+      editTicketId: ticket._id,
+      showTicketsSold: false,
+      showSeats: true,
+      selectedTime: ticket.showTime,
+      selectedSeat: ticket.selectedSeat,
+      age: ticket.age,
+      email: ticket.email
+    });
+  }
+
   purchaseHandler = (ticketPrice) => {
     const ticketOrder = {
       ticket: {
         showDate: "January 1st, 3030",
         showTime: this.state.selectedTime,
+        selectedSeat: this.state.selectedSeat,
         age: this.state.age,
         cost: ticketPrice,
         email: this.state.email
       }
     }
 
-    axios.post("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets", ticketOrder)
+    if (this.state.editTicketId) {
+      axios.put("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets/" + this.state.editTicketId, ticketOrder)
       .then(res => {
         const movieIdx = this.state.movies.indexOf(this.state.selectedMovie);
         const updatedMovies = [...this.state.movies];
@@ -88,8 +103,23 @@ class App extends Component {
           movies: updatedMovies,
           selectedMovie: res.data
         });
-        console.log("Purchased ticket!");
+        console.log("Updated ticket order!");
       });
+    } else {
+      axios.post("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets", ticketOrder)
+      .then(res => {
+        const movieIdx = this.state.movies.indexOf(this.state.selectedMovie);
+        const updatedMovies = [...this.state.movies];
+        updatedMovies[movieIdx] = res.data;
+        this.setState({
+          movies: updatedMovies,
+          selectedMovie: res.data
+        });
+        console.log("Ticket purchased!");
+      });
+    }
+
+    
 
     this.toggleSeatsHandler();
 
@@ -142,7 +172,8 @@ class App extends Component {
           showTicketsSold={this.state.showTicketsSold}
           toggleTicketsSold={this.toggleTicketsSoldHandler}
           selectedMovie={this.state.selectedMovie}
-          deleteOrder={this.deleteOrderHandler} />
+          deleteOrder={this.deleteOrderHandler}
+          editButton={this.editButtonHandler} />
         <button onClick={this.consoleLogHandler}>
           Check State
         </button>

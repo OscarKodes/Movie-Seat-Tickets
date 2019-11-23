@@ -9,11 +9,13 @@ const ticketsSold = (props) => {
 
     if (props.selectedMovie.orders && props.selectedMovie.orders.length > 0) {
         allTickets = props.selectedMovie.orders.map(ticket => {
+            let num = Math.random();
             return (
                 <TicketCard 
-                    key={ticket._id} 
+                    key={ticket._id + num} 
                     ticket={ticket}
-                    deleteOrder={props.deleteOrder}/> 
+                    deleteOrder={props.deleteOrder}
+                    editButton={props.editButton}/> 
             )
         })
     }

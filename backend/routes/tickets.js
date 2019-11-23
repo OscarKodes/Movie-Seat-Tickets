@@ -57,7 +57,7 @@ router.put("/:ticket_id", (req, res) => {
             const idx = foundMovie.orders.indexOf(foundTicket);
             foundMovie.orders[idx] = req.body.ticket;
             foundMovie.save();
-            res.status(200).json("Ticket order updated");
+            res.status(200).json(foundMovie);
         }
     });
 });

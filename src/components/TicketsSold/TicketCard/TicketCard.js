@@ -14,17 +14,20 @@ const ticketCard = (props) => {
                         <td>Time: </td><td>{props.ticket.showTime}</td>
                     </tr>
                     <tr>
+                        <td>Seat: </td><td>{props.ticket.selectedSeat}</td>
+                    </tr>
+                    <tr>
                         <td>Age: </td><td>{props.ticket.age}</td>
                     </tr>
                     <tr>
                         <td>Email: </td><td>{props.ticket.email}</td>
                     </tr>
                     <tr>
-                        <td>Price: </td><td>${props.ticket.cost.toFixed(2)}</td>
+                        <td>Price: </td><td>${Number(props.ticket.cost).toFixed(2)}</td>
                     </tr>
                 </tbody>
             </table>
-            <button>Edit</button>
+            <button onClick={() => props.editButton(props.ticket)}>Edit</button>
             <button onClick={() => props.deleteOrder(props.ticket._id)}>Delete</button>
         </div>
     )
