@@ -46,9 +46,9 @@ class App extends Component {
     });
   }
 
-  selectMovieHandler = (movie) => {
+  selectSeatHandler = (seatStr) => {
     this.setState({
-      selectedMovie: movie
+      selectedSeat: seatStr
     });
   };
 
@@ -80,12 +80,39 @@ class App extends Component {
     }
 
     axios.post("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets", ticketOrder)
-      .then(res => console.log(res.data));
+      .then(res => {
+        const movieIdx = this.state.movies.indexOf(this.state.selectedMovie);
+        const updatedMovies = [...this.state.movies];
+        updatedMovies[movieIdx] = res.data;
+        this.setState({
+          movies: updatedMovies,
+          selectedMovie: res.data
+        });
+        console.log("Purchased ticket!");
+      });
 
     this.toggleSeatsHandler();
 
     // Work on list of ticket orders - make similar to seatSelection
     alert("Ordered List Opens Here");
+  }
+
+  deleteOrderHandler = (ticketId) => {
+    
+    axios.delete("http://localhost:5000/movies/" + this.state.selectedMovie._id + "/tickets/" + ticketId)
+      .then(res => console.log(res.data));
+    const updatedOrders = this.state.selectedMovie.orders.filter(order => order._id !== ticketId);
+    const updatedSelectedMovie = {
+      ...this.state.selectedMovie,
+      orders: updatedOrders
+    };
+    const selectedMovieIdx = this.state.movies.indexOf(this.state.selectedMovie);
+    const updatedMovies = [...this.state.movies];
+    updatedMovies[selectedMovieIdx] = updatedSelectedMovie;
+    this.setState({
+      selectedMovie: updatedSelectedMovie,
+      movies: updatedMovies
+    });
   }
 
   consoleLogHandler = () => {
@@ -114,7 +141,8 @@ class App extends Component {
         <TicketsSold 
           showTicketsSold={this.state.showTicketsSold}
           toggleTicketsSold={this.toggleTicketsSoldHandler}
-          selectedMovie={this.state.selectedMovie} />
+          selectedMovie={this.state.selectedMovie}
+          deleteOrder={this.deleteOrderHandler} />
         <button onClick={this.consoleLogHandler}>
           Check State
         </button>

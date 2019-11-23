@@ -8,7 +8,14 @@ const ticketsSold = (props) => {
     let allTickets = null;
 
     if (props.selectedMovie.orders && props.selectedMovie.orders.length > 0) {
-        allTickets = props.selectedMovie.orders.map(ticket => <TicketCard key={ticket._id} ticket={ticket}/> )
+        allTickets = props.selectedMovie.orders.map(ticket => {
+            return (
+                <TicketCard 
+                    key={ticket._id} 
+                    ticket={ticket}
+                    deleteOrder={props.deleteOrder}/> 
+            )
+        })
     }
 
     return (

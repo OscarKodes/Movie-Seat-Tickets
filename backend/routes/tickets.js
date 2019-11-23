@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
         } else {
             foundMovie.orders.push(req.body.ticket);
             foundMovie.save();
-            res.status(200).json("Ticket order purchased!");
+            res.status(200).json(foundMovie);
         }
     });
 });
@@ -70,7 +70,7 @@ router.delete("/:ticket_id", (req, res) => {
             console.log(err);
             res.status(400).json("Error: " + err);
         } else {
-            let idx = foundMovie.orders.slice().filter(ticket => ticket._id.equals(req.params.ticket_id));
+            let idx = foundMovie.orders.findIndex(order => order._id.equals(req.params.ticket_id));
             foundMovie.orders.splice(idx, 1);
             foundMovie.save();
             res.status(200).json("Ticket order deleted");

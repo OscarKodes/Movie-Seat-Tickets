@@ -25,7 +25,7 @@ const ticketCard = (props) => {
                 </tbody>
             </table>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => props.deleteOrder(props.ticket._id)}>Delete</button>
         </div>
     )
 }
