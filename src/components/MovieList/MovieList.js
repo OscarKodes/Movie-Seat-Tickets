@@ -10,9 +10,10 @@ const movieList = (props) => {
         allMovieCards = props.movies.map(movie => {
             return (
                 <MovieCard 
-                key={movie._id} 
-                movie={movie}
-                timeClick={props.timeClick}/>
+                    key={movie._id} 
+                    movie={movie}
+                    timeClick={props.timeClick}
+                    toggleTicketsSold={props.toggleTicketsSold}/>
             )
         });
     }

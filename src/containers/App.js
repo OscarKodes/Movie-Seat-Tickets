@@ -3,12 +3,14 @@ import axios from "axios";
 import classes from "./App.module.css";
 import MovieList from "../components/MovieList/MovieList";
 import SeatSelection from "../components/SeatSelection/SeatSelection";
+import TicketsSold from "../components/TicketsSold/TicketsSold";
 
 class App extends Component {
 
   state = {
     movies: [],
     showSeats: false,
+    showTicketsSold: false,
     selectedMovie: {},
     selectedTime: "",
     selectedSeat: "",
@@ -35,6 +37,21 @@ class App extends Component {
     });
   };
 
+  toggleTicketsSoldHandler = (movie) => {
+    this.setState(prevState => {
+      return {
+        showTicketsSold: !prevState.showTicketsSold,
+        selectedMovie: movie
+      }
+    });
+  }
+
+  selectMovieHandler = (movie) => {
+    this.setState({
+      selectedMovie: movie
+    });
+  };
+
   movieTimeClickHandler = (movie, time) => {
     this.setState({
       selectedMovie: movie,
@@ -42,10 +59,6 @@ class App extends Component {
     });
     this.toggleSeatsHandler();
   };
-
-  selectSeatHandler = (seatStr) => {
-    this.setState({selectedSeat: seatStr});
-  }
 
   ageChangeHandler = (event) => {
     this.setState({age: event.target.value});
@@ -84,7 +97,8 @@ class App extends Component {
       <div className={classes.App}>
         <MovieList 
           movies={this.state.movies}
-          timeClick={this.movieTimeClickHandler}/>
+          timeClick={this.movieTimeClickHandler}
+          toggleTicketsSold={this.toggleTicketsSoldHandler}/>
         <SeatSelection
           showSeats={this.state.showSeats}
           toggleSeats={this.toggleSeatsHandler}
@@ -97,6 +111,10 @@ class App extends Component {
           age={this.state.age}
           email={this.state.email}
           purchase={this.purchaseHandler}/>
+        <TicketsSold 
+          showTicketsSold={this.state.showTicketsSold}
+          toggleTicketsSold={this.toggleTicketsSoldHandler}
+          selectedMovie={this.state.selectedMovie} />
         <button onClick={this.consoleLogHandler}>
           Check State
         </button>

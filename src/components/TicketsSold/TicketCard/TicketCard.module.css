@@ -1,0 +1,14 @@
+.TicketCard {
+    border: 1px grey solid;
+    padding: 1rem;
+    margin: 1rem auto;
+    text-align: left;
+    border-radius: .2rem;
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+}
+
+.TicketCard table {
+    margin: 1rem auto;
+    width: 15rem;
+    line-height: 2;
+}

@@ -1,0 +1,11 @@
+.TicketsSold {
+    border: 1px grey solid;
+    border-radius: .2rem;
+    background-color: white;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 25%;
+    z-index: 200;
+    position: absolute;
+    top: 35vh;
+}
