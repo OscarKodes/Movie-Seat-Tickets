@@ -8,12 +8,26 @@
     margin: .25rem;
 }
 
+.Seat.Sold {
+    background-color: lightgray;
+}
+
+.Seat.EditSeat {
+    background-color: lightblue;
+}
+
 .Seat.Selected {
     background-color: lightgreen;
 }
 
 .Seat:hover {
     transform: scale(1.08);
+    cursor: pointer;
+}
+
+.Seat.Sold:hover {
+    transform: scale(1);
+    cursor: default;
 }
 
 .Seat:active {

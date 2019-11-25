@@ -12,6 +12,7 @@ class App extends Component {
     showSeats: false,
     showTicketsSold: false,
     editTicketId: null,
+    editTicketSeat: null,
     selectedMovie: {},
     selectedTime: "",
     selectedSeat: "",
@@ -34,7 +35,8 @@ class App extends Component {
         selectedSeat: "",
         email: "",
         age: "",
-        editTicketId: prevState.showSeats ? null : this.state.editTicketId
+        editTicketId: prevState.showSeats ? null : this.state.editTicketId,
+        editTicketSeat: prevState.showSeats ? null : this.state.editTicketSeat
       }
     });
   };
@@ -73,6 +75,7 @@ class App extends Component {
   editButtonHandler = (ticket) => {
     this.setState({
       editTicketId: ticket._id,
+      editTicketSeat: ticket.selectedSeat,
       showTicketsSold: false,
       showSeats: true,
       selectedTime: ticket.showTime,
@@ -166,7 +169,7 @@ class App extends Component {
           age={this.state.age}
           email={this.state.email}
           purchase={this.purchaseHandler}
-          editMode={this.state.editTicketId !== null}/>
+          editTicketSeat={this.state.editTicketSeat}/>
         <TicketsSold 
           showTicketsSold={this.state.showTicketsSold}
           toggleTicketsSold={this.toggleTicketsSoldHandler}

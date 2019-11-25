@@ -7,12 +7,19 @@ const seat = (props) => {
     if (props.selectedSeat === props.children.join("")) {
         divClass.push(classes.Selected);
     }
+    if (props.seatTaken) {
+        if (props.editTicketSeat === props.children.join("")) {
+            divClass.push(classes.EditSeat);
+        } else {
+            divClass.push(classes.Sold);
+        }
+    }
 
     return (
         <div
             className={divClass.join(" ")}
-            onClick={() => props.selectSeatHandler(props.children.join(""))}>
-            {props.children} {props.seatTaken ? "Sold" : null}
+            onClick={divClass.includes(classes.Sold) ? null : () => props.selectSeatHandler(props.children.join(""))}>
+            {props.children}
         </div>
     )
 }

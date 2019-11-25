@@ -41,7 +41,8 @@ class seatSelection extends Component {
                         selectedSeat={this.props.selectedSeat}
                         selectSeatHandler={this.props.selectSeatHandler}
                         allOrders={this.props.selectedMovie.orders}
-                        selectedTime={this.props.selectedTime}/>
+                        selectedTime={this.props.selectedTime}
+                        editTicketSeat={this.props.editTicketSeat}/>
                     <p>Selected Seat: {this.props.selectedSeat}</p>
                     <p>Movie: {this.props.selectedMovie.title}</p>
                     <p>Time: {this.props.selectedTime}</p>
@@ -67,7 +68,7 @@ class seatSelection extends Component {
                         <p><strong>${ticketPrice.toFixed(2)}</strong></p>
                     </label>
                     <button onClick={() => this.props.purchase(ticketPrice.toFixed(2))}>
-                        {this.props.editMode ? "Update" : "Purchase"}
+                        {this.props.editTicketSeat ? "Update" : "Purchase"}
                     </button>
                 </div>
             </React.Fragment>

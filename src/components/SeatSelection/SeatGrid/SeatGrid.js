@@ -22,7 +22,8 @@ const seatGrid = (props) => {
                     key={col} 
                     selectedSeat={props.selectedSeat} 
                     selectSeatHandler={props.selectSeatHandler}
-                    seatTaken={soldSeats.includes(row + col) ? true : false}>
+                    seatTaken={soldSeats.includes(row + col) ? true : false}
+                    editTicketSeat={props.editTicketSeat}>
                     {row}{col}
                 </Seat>
             )
