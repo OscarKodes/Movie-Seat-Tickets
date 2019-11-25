@@ -39,6 +39,8 @@ class App extends Component {
         editTicketSeat: prevState.showSeats ? null : this.state.editTicketSeat
       }
     });
+
+    window.scrollTo(0, 0);
   };
 
   toggleTicketsSoldHandler = (movie) => {
@@ -48,6 +50,8 @@ class App extends Component {
         selectedMovie: movie
       }
     });
+
+    window.scrollTo(0, 0);
   }
 
   selectSeatHandler = (seatStr) => {
