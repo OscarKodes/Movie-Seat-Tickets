@@ -25,8 +25,9 @@ const movieCard = (props) => {
             <div className={classes.TimeSlots}>
                 {timeButtons}
             </div> 
-            <button 
-                onClick={() => props.toggleTicketsSold(props.movie)}>All ticket orders list</button>
+            <div
+                className={classes.Button}
+                onClick={() => props.toggleTicketsSold(props.movie)}>Sold Tickets List</div>
         </div>
     )
 };

@@ -87,6 +87,8 @@ class App extends Component {
       age: ticket.age,
       email: ticket.email
     });
+
+    window.scrollTo(0, 0);
   }
 
   purchaseHandler = (ticketPrice) => {
