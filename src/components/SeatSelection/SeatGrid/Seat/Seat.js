@@ -12,7 +12,7 @@ const seat = (props) => {
         <div
             className={divClass.join(" ")}
             onClick={() => props.selectSeatHandler(props.children.join(""))}>
-            {props.children}
+            {props.children} {props.seatTaken ? "Sold" : null}
         </div>
     )
 }

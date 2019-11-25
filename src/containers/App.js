@@ -165,7 +165,8 @@ class App extends Component {
           emailChangeHandler={this.emailChangeHandler}
           age={this.state.age}
           email={this.state.email}
-          purchase={this.purchaseHandler}/>
+          purchase={this.purchaseHandler}
+          editMode={this.state.editTicketId !== null}/>
         <TicketsSold 
           showTicketsSold={this.state.showTicketsSold}
           toggleTicketsSold={this.toggleTicketsSoldHandler}
