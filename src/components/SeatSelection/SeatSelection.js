@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import SeatGrid from "./SeatGrid/SeatGrid";
 import classes from "./SeatSelection.module.css";
 import Backdrop from "../Backdrop/Backdrop";
+import CancelButton from "../CancelButton/CancelButton";
 
 class seatSelection extends Component {
 
@@ -36,7 +37,8 @@ class seatSelection extends Component {
                         transform: this.props.showSeats ? "translateY(0)" : "translateY(100vh)",
                         opacity: this.props.showSeats ? "1" : "0"
                     }}>
-                    <p onClick={this.props.toggleSeats}>X Cancel</p>
+                    <CancelButton click={this.props.toggleSeats}></CancelButton>
+                    <h1>{this.props.editTicketSeat ? "Edit Ticket Order" : "Select a Seat"}</h1>
                     <SeatGrid 
                         selectedSeat={this.props.selectedSeat}
                         selectSeatHandler={this.props.selectSeatHandler}

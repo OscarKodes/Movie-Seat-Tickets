@@ -1,0 +1,14 @@
+.CancelButton div {
+    position: relative;
+}
+
+.CancelButton i {
+    position: absolute;
+    right: 1rem;
+    color: grey;
+}
+
+.CancelButton i:hover {
+    transform: scale(1.2);
+    color: black;
+}

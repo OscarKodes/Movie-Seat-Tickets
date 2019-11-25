@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Backdrop from "../Backdrop/Backdrop";
 import TicketCard from "./TicketCard/TicketCard";
 import classes from "./TicketsSold.module.css"
+import CancelButton from "../CancelButton/CancelButton";
 
 class ticketsSold extends Component {
 
@@ -40,7 +41,7 @@ class ticketsSold extends Component {
                         transform: this.props.showTicketsSold ? "translateY(0)" : "translateY(100vh)",
                         opacity: this.props.showTicketsSold ? "1" : "0"
                     }}>
-                    <p onClick={this.props.toggleTicketsSold}>X Cancel</p>
+                    <CancelButton click={this.props.toggleTicketsSold}></CancelButton>
                     <h1>{this.props.selectedMovie.title}</h1>
                     <h2>Purchased Ticket Orders</h2>
                     {allTickets}
