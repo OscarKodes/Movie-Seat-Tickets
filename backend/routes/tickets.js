@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
             console.log(err);
             res.status(400).json("Error: " + err);
         } else {
-            foundMovie.orders.push(req.body.ticket);
+            foundMovie.orders.unshift(req.body.ticket);
             foundMovie.save();
             res.status(200).json(foundMovie);
         }
@@ -55,7 +55,8 @@ router.put("/:ticket_id", (req, res) => {
             const ordersCopy = foundMovie.orders.slice();
             const foundTicket = ordersCopy.filter(ticket => ticket._id.equals(req.params.ticket_id))[0];
             const idx = foundMovie.orders.indexOf(foundTicket);
-            foundMovie.orders[idx] = req.body.ticket;
+            foundMovie.orders.splice([idx], 1);
+            foundMovie.orders.unshift(req.body.ticket);
             foundMovie.save();
             res.status(200).json(foundMovie);
         }

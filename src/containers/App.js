@@ -121,12 +121,8 @@ class App extends Component {
       });
     }
 
-    
-
     this.toggleSeatsHandler();
-
-    // Work on list of ticket orders - make similar to seatSelection
-    alert("Ordered List Opens Here");
+    this.toggleTicketsSoldHandler(this.state.selectedMovie);
   }
 
   deleteOrderHandler = (ticketId) => {
