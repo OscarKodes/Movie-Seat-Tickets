@@ -5,9 +5,9 @@ import Backdrop from "../Backdrop/Backdrop";
 
 class seatSelection extends Component {
 
-    // componentDidUpdate() {
-    //     console.log("Component updated: seatSelection");
-    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.showSeats || nextProps.showSeats !== this.props.showSeats;
+    }
     
     render () {
 

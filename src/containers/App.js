@@ -146,10 +146,6 @@ class App extends Component {
     });
   }
 
-  consoleLogHandler = () => {
-    console.log(this.state);
-  }
-
   render() {
     return (
       <div className={classes.App}>
@@ -176,9 +172,6 @@ class App extends Component {
           selectedMovie={this.state.selectedMovie}
           deleteOrder={this.deleteOrderHandler}
           editButton={this.editButtonHandler} />
-        <button onClick={this.consoleLogHandler}>
-          Check State
-        </button>
       </div>
     );
   }
