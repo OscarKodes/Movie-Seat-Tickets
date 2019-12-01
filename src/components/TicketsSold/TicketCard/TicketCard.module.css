@@ -1,14 +1,56 @@
 .TicketCard {
     border: 1px grey solid;
-    padding: 1rem;
-    margin: 1rem auto;
+    padding: .5rem;
+    margin: .5rem auto;
     text-align: left;
     border-radius: .2rem;
     box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
 }
 
 .TicketCard table {
-    margin: 1rem auto;
+    margin: 0 auto;
     width: 15rem;
-    line-height: 2;
+    line-height: 1.5;
+}
+
+.FlexContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.ButtonContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.EditBtn,
+.DeleteBtn {
+    border: 1px solid lightgrey;
+    padding: .2rem;
+    margin: .5rem;
+    width: 3rem;
+    text-align: center;
+    border-radius: .2rem;
+}
+
+.EditBtn:hover,
+.DeleteBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+}
+
+.EditBtn:active,
+.DeleteBtn:active {
+    transform: scale(1);
+}
+
+.EditBtn:hover {
+    background: rgb(163, 203, 228);
+}
+
+.DeleteBtn:hover {
+    background: rgb(226, 166, 175);
 }
