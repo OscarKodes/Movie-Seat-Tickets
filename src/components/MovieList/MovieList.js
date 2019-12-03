@@ -20,7 +20,6 @@ const movieList = (props) => {
 
     return (
         <div className={classes.MovieList}>
-            <h1>This is movieList</h1>
             {allMovieCards}
         </div>
     )

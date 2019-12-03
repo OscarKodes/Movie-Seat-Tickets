@@ -43,7 +43,7 @@ class ticketsSold extends Component {
                     }}>
                     <CancelButton click={this.props.toggleTicketsSold}></CancelButton>
                     <h1>{this.props.selectedMovie.title}</h1>
-                    <h2>Purchased Ticket Orders</h2>
+                    <h2>All Purchased Ticket Orders</h2>
                     {allTickets}
                 </div>
             </React.Fragment>

@@ -155,6 +155,7 @@ class App extends Component {
   render() {
     return (
       <div className={classes.App}>
+        <h1 className={classes.Heading}>Movie Seat Reservations</h1>
         <MovieList 
           movies={this.state.movies}
           timeClick={this.movieTimeClickHandler}
