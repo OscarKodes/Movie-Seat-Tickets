@@ -24,7 +24,7 @@ class About extends Component {
                     <CancelButton click={this.props.toggleAbout}/>
                     <h1>About</h1>
                     <div className={classes.AboutText}>
-                        <p>This is a MERN stack application created with full CRUD functionality.</p>
+                        <p>This is a MERN stack single page application created with full CRUD functionality.</p>
                         <p>With this application, seat tickets can be selected from a grid and purchased.</p>
                         <p>The ticket orders may be edited and deleted.</p>
                     </div>
