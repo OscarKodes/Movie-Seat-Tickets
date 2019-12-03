@@ -4,6 +4,7 @@ import classes from "./App.module.css";
 import MovieList from "../components/MovieList/MovieList";
 import SeatSelection from "../components/SeatSelection/SeatSelection";
 import TicketsSold from "../components/TicketsSold/TicketsSold";
+import About from "../components/About/About";
 
 class App extends Component {
 
@@ -11,6 +12,7 @@ class App extends Component {
     movies: [],
     showSeats: false,
     showTicketsSold: false,
+    showAbout: false,
     editTicketId: null,
     editTicketSeat: null,
     selectedMovie: {},
@@ -52,6 +54,12 @@ class App extends Component {
     });
 
     window.scrollTo(0, 0);
+  }
+
+  toggleAbout = () => {
+    this.setState(prevState => {
+      return {showAbout: !prevState.showAbout}
+    });
   }
 
   selectSeatHandler = (seatStr) => {
@@ -156,6 +164,12 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <h1 className={classes.Heading}>Movie Seat Reservations</h1>
+        <p 
+          className={classes.AboutBtn}
+          onClick={this.toggleAbout}>About</p>
+        <About
+          showAbout={this.state.showAbout}
+          toggleAbout={this.toggleAbout}/>
         <MovieList 
           movies={this.state.movies}
           timeClick={this.movieTimeClickHandler}

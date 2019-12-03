@@ -6,10 +6,6 @@ import CancelButton from "../CancelButton/CancelButton";
 
 class ticketsSold extends Component {
 
-    componentDidUpdate() {
-        console.log("tickets sold updated");
-    }
-
     shouldComponentUpdate(nextProps) {
         return nextProps.showTicketsSold || nextProps.showTicketsSold !== this.props.showTicketsSold;
     }
