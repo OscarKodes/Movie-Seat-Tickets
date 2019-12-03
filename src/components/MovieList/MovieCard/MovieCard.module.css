@@ -25,6 +25,7 @@
 .Button:hover {
     box-shadow: 0 .2rem .5rem rgba(0,0,0,.15);
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .TimeSlots p:active {

@@ -40,6 +40,7 @@
 .DeleteBtn:hover {
     transform: scale(1.1);
     box-shadow: 0 .2rem .5rem rgba(0,0,0,.1);
+    cursor: pointer;
 }
 
 .EditBtn:active,
