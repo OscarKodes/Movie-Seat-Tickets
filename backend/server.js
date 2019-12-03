@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json()); // bodyParser and JSON functionality
 
 // MONGOT ATLAS CONNECTION ======================
-const url = "mongodb://localhost:27017/movieDB" || process.env.ATLAS_URL;
+const url = process.env.ATLAS_URL || "mongodb://localhost:27017/movieDB";
 mongoose.connect(url, {
     useNewUrlParser: true, 
     useCreateIndex: true,
