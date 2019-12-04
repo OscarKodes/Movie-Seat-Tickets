@@ -5,8 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-// const port = process.env.PORT || 5000;
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // REQUIRE ROUTE FILES ==========================
 const movieRoutes = require("./routes/movies");
