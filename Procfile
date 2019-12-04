@@ -1,1 +1,1 @@
-web: node backend/server.js & npm start & wait -n
+web: npm start
