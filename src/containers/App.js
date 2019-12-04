@@ -22,9 +22,9 @@ class App extends Component {
     age: "",
     price: null
   }
-
+  
   componentDidMount() {
-    axios.get("http://localhost:5000/movies")
+    axios.get("https://movie-seat-tickets.herokuapp.com/movies")
       .then(res => {
         this.setState({movies: res.data})
       })
