@@ -8,16 +8,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // IF HEROKU ====================================
-if (process.env.NODE_ENV === 'production') {
 
-    // Express will serve up production assets
-    app.use(express.static(__dirname + '/public'));
-
-    // Express serve up index.html file if it doesn't recognize route
-    app.get("/", (req, res) => {
-        res.render("index.html");
-    });
-}
 
 // REQUIRE ROUTE FILES ==========================
 const movieRoutes = require("./routes/movies");
@@ -26,6 +17,10 @@ const ticketRoutes = require("./routes/tickets");
 // APP USE ======================================
 app.use(cors());
 app.use(express.json()); // bodyParser and JSON functionality
+
+// Express will serve up production assets
+app.use(express.static(__dirname + '/public'));
+
 
 // MONGOT ATLAS CONNECTION ======================
 const url = process.env.ATLAS_URL || "mongodb://localhost:27017/movieDB";
@@ -38,6 +33,11 @@ mongoose.connect(url, {
 
 mongoose.connection.once("open", () => {
     console.log(`MongoDB database connection established at: ${url}`);
+});
+
+// Express serve up index.html file if it doesn't recognize route
+app.get("/", (req, res) => {
+    res.render("index.html");
 });
 
 // ROUTERS ======================================
