@@ -24,7 +24,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-    axios.get("/movies")
+    axios.get("http://localhost:5000/movies")
       .then(res => {
         this.setState({movies: res.data})
       })
